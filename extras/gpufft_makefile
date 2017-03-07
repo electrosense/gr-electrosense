@@ -1,0 +1,23 @@
+CC    = gcc
+CFLAGS = -fPIC -g 
+LDFLAGS = -shared
+
+
+SOURCES = gpu_fft.c gpu_fft_base.c gpu_fft_shaders.c gpu_fft_trans.c gpu_fft_twiddles.c mailbox.c   
+HEADERS = gpu_fft.h gpu_fft_trans.h mailbox.h 
+OBJECTS = $(SOURCES:.c=.o)
+SHLIB = $(OBJECTS:.o=.so)
+
+PREFIX = /usr/lib
+
+$(SHLIB): $(OBJECTS)
+	$(CC) -shared -o libgpufft.so $(OBJECTS)
+
+all: $(SHLIB)
+
+clean:
+	rm -rf *.o
+
+install:
+	cp libgpufft.so $(PREFIX)
+ 

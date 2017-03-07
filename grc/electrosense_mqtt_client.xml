@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<block>
+	<name>MQTT client</name>
+  <key>electrosense_mqtt_client</key>
+  <category>[Electrosense]</category>
+  <import>import electrosense</import>
+  <make>electrosense.mqtt_client($server, $port, $channel, $ca_cert, $certfile, $keyfile)</make>
+    <param>
+      <name>Server IP</name>
+      <key>server</key>
+      <value>127.0.0.1</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Port</name>
+      <key>port</key>
+      <value>1883</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Channel</name>
+      <key>channel</key>
+      <value>electrosense</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>CA certificate</name>
+      <key>ca_cert</key>
+      <value></value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Client certificate(PEM)</name>
+      <key>certfile</key>
+      <value></value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Private key(PEM)</name>
+      <key>keyfile</key>
+      <value></value>
+      <type>string</type>
+    </param>
+ 	<source>
+	  <name>out</name>
+ 	  <type>message</type>
+ 	</source>
+</block>

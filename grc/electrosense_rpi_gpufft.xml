@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<block>
+  <name>RPI gpufft</name>
+  <key>electrosense_rpi_gpufft</key>
+  <category>[Electrosense]</category>
+  <import>import electrosense</import>
+  <make>electrosense.rpi_gpufft($fft_size, $forward, $shift, $njobs)</make>
+	<param>
+		<name>FFT Size</name>
+		<key>fft_size</key>
+		<value>512</value>
+		<type>int</type>
+	</param>
+	<param>
+		<name>Forward/Reverse</name>
+		<key>forward</key>
+		<type>enum</type>
+		<option>
+			<name>Forward</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>Reverse</name>
+			<key>False</key>
+		</option>
+	</param>
+	<param>
+		<name>Shift</name>
+		<key>shift</key>
+		<type>enum</type>
+		<option>
+			<name>Yes</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>No</name>
+			<key>False</key>
+		</option>
+	</param>
+	<param>
+		<name>Num. Jobs</name>
+		<key>njobs</key>
+		<value>16</value>
+		<type>int</type>
+	</param>
+	<sink>
+		<name>in</name>
+		<type>complex</type>
+		<vlen>$fft_size</vlen>
+	</sink>
+	<source>
+		<name>out</name>
+		<type>complex</type>
+		<vlen>$fft_size</vlen>
+	</source>
+</block>

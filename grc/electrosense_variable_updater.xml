@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<block>
+  <name>Variable updater</name>
+  <key>electrosense_variable_updater</key>
+  <category>[Electrosense]</category>
+  <import>import electrosense</import>
+  <make>electrosense.variable_updater()
+self.$(id).register_instance(self)</make>
+  <sink>
+    <name>in</name>
+    <type>message</type>
+  </sink>
+</block>

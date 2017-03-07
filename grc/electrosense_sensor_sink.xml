@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<block>
+  <name>Sensor sink</name>
+  <key>electrosense_sensor_sink</key>
+  <category>[Electrosense]</category>
+  <import>import electrosense</import>
+  <make>electrosense.sensor_sink($server, $port, $veclen,
+                 $dtype.size, $avrofile, $keyfile, $certfile, $senid, $hopping, 
+                 $window, $fftsize, $avgfactor,
+                 $freqoverlap, $freqresol, 
+                 $freq, $gain)</make>
+    <callback>set_hopping($hopping)</callback>
+    <callback>set_window($window)</callback>
+    <callback>set_fftsize($fftsize)</callback>
+    <callback>set_avgfactor($avgfactor)</callback>
+    <callback>set_freqoverlap($freqoverlap)</callback>
+    <callback>set_freqresol($freqresol)</callback>
+    <callback>set_freq($freq)</callback>
+    <callback>set_gain($gain)</callback>
+    <param>
+      <name>Server IP</name>
+      <key>server</key>
+      <value>127.0.0.1</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Port</name>
+      <key>port</key>
+      <value>5000</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Vector length</name>
+      <key>veclen</key>
+      <value>1</value>
+      <type>int</type>
+    </param>
+	<param>
+		<name>Input Type</name>
+		<key>dtype</key>
+		<type>enum</type>
+		<option>
+			<name>Complex</name>
+			<key>complex</key>
+			<opt>size:"complex64"</opt>
+		</option>
+		<option>
+			<name>Float</name>
+			<key>float</key>
+			<opt>size:"float32"</opt>
+		</option>
+		<option>
+			<name>Int</name>
+			<key>int</key>
+			<opt>size:"uint16"</opt>
+		</option>
+	</param>
+    <param>
+      <name>Schema file</name>
+      <key>avrofile</key>
+      <value>rtl-spec.avsc</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Key file</name>
+      <key>keyfile</key>
+      <value>Sensor-SSL-SK.pem</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Certificate</name>
+      <key>certfile</key>
+      <value>Sensor-SSL-Cert.pem</value>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Sensor ID</name>
+      <key>senid</key>
+      <value>123456</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Hopping type</name>
+      <key>hopping</key>
+      <value>0</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>FFT window</name>
+      <key>window</key>
+      <value>0</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>FFT size</name>
+      <key>fftsize</key>
+      <value>256</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Averaging factor</name>
+      <key>avgfactor</key>
+      <value>5</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Frequency overlap</name>
+      <key>freqoverlap</key>
+      <value>0.5</value>
+      <type>float</type>
+    </param>
+    <param>
+      <name>Frequency resolution</name>
+      <key>freqresol</key>
+      <value>50</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Centre frequency</name>
+      <key>freq</key>
+      <value>1800000</value>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Gain</name>
+      <key>gain</key>
+      <value>-1</value>
+      <type>int</type>
+    </param>
+	<sink>
+		<name>in0</name>
+		<type>$dtype</type>
+		<vlen>$veclen</vlen>
+	</sink>
+</block>

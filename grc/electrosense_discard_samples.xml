@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<block>
+  <name>Discard samples</name>
+  <key>electrosense_discard_samples</key>
+  <category>[Electrosense]</category>
+  <import>import electrosense</import>
+  <make>electrosense.discard_samples($nsamples, $var, $tag_name, $mode.tp)</make>
+  <callback>set_nsamples($nsamples)</callback>
+  <callback>set_var($var)</callback>
+  <param>
+    <name>Nsamples</name>
+    <key>nsamples</key>
+    <value>100</value>
+    <type>int</type>
+  </param>
+  
+  <param>
+    <name>Variable</name>
+    <key>var</key>
+    <value>cfreq</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Tag Name</name>
+    <key>tag_name</key>
+    <value>pmt.intern("burst_len")</value>
+    <type>raw</type>
+  </param>
+  <param>
+		<name>Mode</name>
+		<key>mode</key>
+		<type>enum</type>
+		<option>
+			<name>Variable</name>
+			<key>varchange</key>
+			<opt>tp:False</opt>
+		</option>
+		<option>
+			<name>Tag</name>
+			<key>tag</key>
+			<opt>tp:True</opt>
+		</option>
+  </param>
+
+  <check>$nsamples > 0</check>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>
